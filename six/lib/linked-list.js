@@ -40,31 +40,6 @@ class LinkedList{
     current.next = newNode;
   }
 
-  // Vinicio - I'm teaching find, mainly to teach you how to loop
-  find(value) {
-    if(!this.head) {
-      throw new Error('__ERROR__ The list is empty');
-    }
-    if(this.head.value === value) {
-      return this.head;
-    }
-
-    // Vinicio - let's loop over the linked list
-    let current = this.head;
-    while(current.next) {
-      //------------------------------------------------------
-      // Vinicio - While I'm looping I want to check if I find the
-      // value I'm looking for
-      if(current.next.value === value) {
-        return current.next;
-      }
-      //------------------------------------------------------
-      current = current.next;
-    }
-    // Vinicio - if I got to this point, I didn't find anything
-    return null;
-  }
-
   insertBefore(value, newValue){
     const newNode = new Node(newValue);
     let current = this.head;
