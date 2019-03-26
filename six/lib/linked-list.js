@@ -44,31 +44,27 @@ class LinkedList{
     const newNode = new Node(newValue);
     let current = this.head;
     while(current.next){
-      if (current.next.value === value){
+      if (current.next.value === value) {
         let hold = current.next;
         current.next = newNode;
-        newNode.next=hold;
-        return(`new node with value ${newValue} placed into the linked list before value ${value}`);
+        newNode.next = hold;
+        return (`new node with value ${newValue} placed into the linked list before value ${value}`);
       }
-      else{
-        return (`value ${value} was not found in the linked list.`);
-      }
+      current = current.next;
     }
   }
 
   insertAfter(value, newValue){
     const newNode = new Node(newValue);
     let current = this.head;
-    while(current.next){
+    while(current){
       if (current.value === value){
         let hold = current.next;
         current.next = newNode;
         newNode.next=hold;
         return(`new node with value ${newValue} placed into the linked list after value ${value}`);
       }
-      else{
-        return (`value ${value} was not found in the linked list.`);
-      }
+      current=current.next;
     }
   }
 

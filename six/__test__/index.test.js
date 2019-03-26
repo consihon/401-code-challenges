@@ -31,6 +31,7 @@ function areSame(obj){
         current=current.next;
     }
     strLL+=current.value;
+    console.log ('linked: '+strLL, 'Array: '+strArr);
     return (strLL===strArr);
 }
 
@@ -53,10 +54,34 @@ describe('insertAtHead', ()=>{
 });
 
 describe('insertbefore', ()=>{
-    let obj=newlinkedList(10);
-    obj.array.unshift(5);
-    obj.linkedList.insertAtHead(5);
-    it('adds a new node to the start of the linked list', ()=>{
+    let testLinked=new LinkedList();
+    let testArr= [1,3,5,7,9,11];
+    for (let i of testArr){
+        testLinked.append(i);
+    }
+    console.log(testLinked.insertBefore(11,10));
+    testArr[5]=10;
+    testArr[6]=11;
+    let obj = newlinkedList(1);
+    obj.array=testArr;
+    obj.linkedList=testLinked;
+    it('can insert a node before the node of a specified value', ()=>{
+        expect(areSame(obj)).toEqual(true);
+    });
+});
+
+describe('insertAfter', ()=>{
+    let testLinked=new LinkedList();
+    let testArr= [1,3,5,7,9,11];
+    for (let i of testArr){
+        testLinked.append(i);
+    }
+    console.log(testLinked.insertAfter(11,10));
+    testArr[6]=10;
+    let obj = newlinkedList(1);
+    obj.array=testArr;
+    obj.linkedList=testLinked;
+    it('can insert a node before the node of a specified value', ()=>{
         expect(areSame(obj)).toEqual(true);
     });
 });
