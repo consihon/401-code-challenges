@@ -1,11 +1,17 @@
 'use-strict';
 const node = require('./node.js');
+
+module.exports.createStack = function (){
+    return new Stack();
+};
+
 class Stack{
     constructor(){
-        this.top=null;
+        this.top = null;
     }
+
     push(value){
-        let newNode = new Node(value);
+        let newNode = node.createNode(value);
         if (!this.top){
             this.top=newNode;
         }else{
@@ -26,4 +32,3 @@ class Stack{
         return this.top.value;
     }
 }
-module.exports = {Stack};
