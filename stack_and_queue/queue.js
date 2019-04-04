@@ -5,7 +5,7 @@ class Queue{
         this.rear=null;
     }
     enque(value){
-        let newNode = new Node(value);
+        let newNode = node.createNode(value);
         if (!this.front){
             this.front = newNode;
             this.rear = newNode;
@@ -23,7 +23,9 @@ class Queue{
     }
 
     peek(){
-        return this.front.value;
+        return this.front;
     }
 }
-module.exports={Queue};
+module.exports.createQueue=function(){
+  return new Queue();
+};
