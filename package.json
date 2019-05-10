@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "faker": "^4.1.0",
-    "jest": "^24.1.0"
+    "jest": "^24.7.1"
   },
   "devDependencies": {},
   "scripts": {
