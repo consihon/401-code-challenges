@@ -22,4 +22,21 @@ describe('breadth first',()=>{
         }
         expect(exTree.breadthFirst(true)).toEqual(vals);
     });
+    it('can find the greatest value in the tree',()=>{
+        let exTree = new tree.Tree;
+        let vals=[1,2,22,4,5,6,7,8,9,0];
+        for (let i in vals){
+            exTree.insert(vals[i]);
+        }
+        expect(exTree.max(exTree.root)).toEqual(22);
+    });
+    it('handles an empty tree',()=> {
+        let exTree = new tree.Tree;
+        expect(exTree.max()).toEqual(null);
+    });
+    it('handles empty trees',()=>{
+        let exTree= new tree.Tree;
+        expect(exTree.breadthFirst(true)).toEqual('Empty tree');
+    })
+
 });
