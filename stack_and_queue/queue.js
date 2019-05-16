@@ -1,3 +1,4 @@
+'use-strict';
 const node = require('./node.js');
 class Queue{
     constructor(){
