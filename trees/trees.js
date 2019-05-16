@@ -1,51 +1,79 @@
 'use strict';
-let Queue = require('../stack_and_queue/queue');
-
-module.exports.Tree = class{
+const node = require ('./node');
+module.exports.Tree= class{
     constructor(){
         this.root=null;
     }
-
-
     //this insertion method always ensures that we will have a tree that is in attempt to keep itself balanced.
-    insert(val){
+    insert(value){
+        let val = new node.TreeNode(value);
         if (this.root===null ){
             this.root=val;
+            return true;
         }else {
-            let q = new Queue;
-            q.enqueue(this.root);
-            while (q.peek){
-                if(!q.peek.value.left){
-                    q.peek.value.left=val;
-                    break;
+            let q = [];
+            q.unshift(this.root);
+            while (q[q.length-1] !== null){
+                if(!q[q.length-1].left){
+                    q[q.length-1].left = val;
+                    return true;
                 }else{
-                    q.enqueue(q.peek.value.left)
+                    q.unshift(q[q.length-1].left)
                 }
-                if(!q.peek.right){
-                    q.peek.right=val;
-                    break;
+                if(!q[q.length-1].right){
+                    q[q.length-1].right=val;
+                    return true;
                 }else{
-                    q.enqueue(q.peek.value.right)
+                    q.unshift(q[q.length-1].right)
                 }
+                q.pop();
             }
         }
     }
-    breadthFirst(){
+    
+    breadthFirst(test=false){
         let returns=[];
-        let qew = new Queue;
-        if(this.root){
-        qew.enqueue(this.root);
-        while(qew.peek()){
-            returns.push(qew.peek.value.value);
-            if(qew.peek().value.left){
-                qew.enqueue(qew.peek().value.left);
-                if(qew.peek().value.value.right){
-                    qew.enqueue(qew.peek().value.right);
+        let q = [this.root];
+        if (!this.root) {
+            return ('Empty tree');
+        } else {
+            while (q.length!==0){
+                if(q[q.length-1].left){
+                    q.unshift(q[q.length-1].left)
                 }
+                if(q[q.length-1].right){
+                    q.unshift(q[q.length-1].right)
+                }
+                returns.push(q.pop().value);
             }
-            qew.pop();
+            return returns;
         }
-        return(returns.join(" "));
-    };
+    }
+
+    max(current=this.root){
+        if(!this.root){
+            return null;
+        }
+        if (!current.left&&!current.right){
+            return (current.value)
+        }else{
+            let l = null;
+            let r = null;
+            if (current.left){
+               l = this.max(current.left);
+            }
+            if (current.right){
+                r = this.max(current.right);
+            }
+            if (l<r){
+                l=r;
+            }
+            if(l<current.value){
+                return current.value;
+            }
+            else{
+                return l;
+            }
+        }
     }
 };
