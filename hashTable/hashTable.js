@@ -17,19 +17,22 @@ module.exports.HashTable=class{
 
   contains(key){
       let hashed=this.hash(key);
-      if(this.arr[hashed].key===key){
-          return true
-      }else{
-          let current=this.arr[hashed];
-          while(current.next) {
-              if(current.next.key===key){
-                  return true
-              }else{
-                  current=current.next;
+      if (this.arr[hashed]) {
+          if (this.arr[hashed].key === key) {
+              return true
+          } else {
+              let current = this.arr[hashed];
+              while (current.next) {
+                  if (current.next.key === key) {
+                      return true
+                  } else {
+                      current = current.next;
+                  }
               }
+              return false;
           }
-          return false;
       }
+      return false;
   }
 
   add(key,value){
@@ -75,4 +78,6 @@ module.exports.HashTable=class{
           return null;
       }
   }
+
+
 };
