@@ -1,6 +1,6 @@
 'use-strict';
-let linked= require('../six/lib/linked-list');
-let node = require('../six/lib/node');
+let linked= require('../seven/lib/linked-list');
+let node = require('../seven/lib/node');
 const faker = require('faker');
 
 

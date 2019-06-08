@@ -1,7 +1,7 @@
 'use-strict';
 let merge= require ('../linkedMerge');
-let linked= require('../../six/lib/linked-list');
-let node = require('../../six/lib/node');
+let linked= require('../../seven/lib/linked-list');
+let node = require('../../seven/lib/node');
 const faker = require('faker');
 
 

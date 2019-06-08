@@ -8,7 +8,7 @@ const Node = require('./node');
   // Insert Values -> :)
   // Remove Values
   // Iterate / Loop -> :)
-class LinkedList {
+module.exports.LinkedList=class{
   constructor() {
     this.head = null;
   }
@@ -88,4 +88,3 @@ kthFromEnd(k){
 }
 
 
-module.exports = LinkedList;
